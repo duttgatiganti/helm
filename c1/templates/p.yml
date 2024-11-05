@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app1-nginx-deployment2
+  labels:
+    app: app1-ngin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app1-ngin
+  template:
+    metadata:
+      labels:
+        app: app1-ngin
+    spec:
+      containers:
+        - name: app1-ngin
+          image: dutt1/6app:{{ .Values.image.tag }}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+    
